@@ -1,0 +1,497 @@
+/* ===== GLOBAL STYLES ===== */
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  line-height: 1.6;
+  color: var(--dark-color);
+  overflow-x: hidden;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: 80px; /* Account for fixed navbar */
+}
+
+/* ===== UTILITY CLASSES ===== */
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--warning-color));
+  border-radius: 2px;
+}
+
+.hover-primary:hover {
+  color: var(--primary-color) !important;
+  transition: color 0.3s ease;
+}
+
+/* ===== NAVBAR STYLES ===== */
+.navbar-custom {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1030;
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--dark-color) !important;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.brand-logo:hover {
+  color: var(--primary-color) !important;
+}
+
+.nav-link-custom {
+  font-weight: 500;
+  color: var(--dark-color) !important;
+  text-decoration: none;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link-custom:hover {
+  color: var(--primary-color) !important;
+  background-color: rgba(0, 86, 179, 0.1);
+}
+
+.nav-link-custom.active {
+  color: var(--primary-color) !important;
+  background-color: rgba(0, 86, 179, 0.1);
+}
+
+.btn-appointment {
+  background: linear-gradient(135deg, var(--primary-color), #004494);
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+}
+
+.btn-appointment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+}
+
+/* ===== HOME PAGE STYLES ===== */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color), #004494);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" fill-opacity="0.1"/><circle cx="75" cy="25" r="1.5" fill="white" fill-opacity="0.05"/><circle cx="25" cy="75" r="0.5" fill="white" fill-opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" fill-opacity="0.08"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-buttons .btn {
+  margin: 0.25rem;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===== FEATURE CARDS ===== */
+.feature-card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+.feature-icon {
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1);
+}
+
+/* ===== SERVICE CARDS ===== */
+.service-card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.service-icon {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.05);
+}
+
+/* ===== DOCTOR CARDS ===== */
+.doctor-card {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.doctor-photo {
+  border: 4px solid var(--light-color);
+  transition: all 0.3s ease;
+}
+
+.doctor-card:hover .doctor-photo {
+  border-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* ===== BOOK APPOINTMENT STYLES ===== */
+.book-appointment-page {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  min-height: 100vh;
+}
+
+.book-appointment-page .card {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.book-appointment-page .card-header {
+  background: linear-gradient(135deg, var(--primary-color), #004494) !important;
+}
+
+.section-header h5 {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-header h5::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+/* ===== FORM STYLES ===== */
+.form-control, .form-select {
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.1);
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--dark-color);
+  margin-bottom: 0.5rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), #004494);
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.3);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* ===== STATS SECTION ===== */
+.stats-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.stat-item h3 {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-color), #004494);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+  background: linear-gradient(135deg, var(--dark-color), #1a1a1a) !important;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+}
+
+.social-links a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: var(--primary-color);
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media (max-width: 768px) {
+  .main-content {
+    margin-top: 70px;
+  }
+  
+  .hero-section {
+    padding: 3rem 0;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .navbar-cta {
+    padding: 1rem 0 0 0;
+  }
+  
+  .feature-card {
+    margin-bottom: 2rem;
+  }
+  
+  .stats-section .stat-item {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-buttons .btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* ===== CUSTOM ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 86, 179, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 86, 179, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 86, 179, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+/* ===== REACT DATEPICKER CUSTOM STYLES ===== */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  padding: 0.75rem 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.1);
+  outline: none;
+}
+
+/* ===== REACT SELECT CUSTOM STYLES ===== */
+.css-control {
+  border-radius: 10px !important;
+  border: 2px solid #e9ecef !important;
+  min-height: 50px !important;
+}
+
+.css-control--is-focused {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.1) !important;
+}
+
+/* ===== LOADING SPINNER ===== */
+.spinner-border {
+  color: var(--primary-color);
+}
+
+/* ===== ALERT STYLES ===== */
+.alert {
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #d1edff 0%, #e8f5e8 100%);
+  color: var(--success-color);
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #ffe6e6 0%, #fff0f0 100%);
+  color: var(--danger-color);
+}
+
+/* ===== BADGE STYLES ===== */
+.badge {
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+}
+
+/* ===== CARD HOVER EFFECTS ===== */
+.card {
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #004494;
+}
