@@ -17,6 +17,7 @@ const doctorRoutes = require('./routes/doctors');
 const serviceRoutes = require('./routes/services');
 const authRoutes = require('./routes/auth');
 const doctorAppointmentsRoutes = require('./routes/doctorAppointments');
+const setupRoutes = require('./routes/setup');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -43,6 +44,7 @@ app.use('/api/patients', patientRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/doctor', doctorAppointmentsRoutes);
+app.use('/api/setup', setupRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {
