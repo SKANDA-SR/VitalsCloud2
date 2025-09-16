@@ -36,7 +36,6 @@ const Contact = () => {
                 <h5 className="fw-bold mb-3">Call Us</h5>
                 <p className="text-muted mb-2">
                   <strong>Main:</strong> (555) 123-4567<br />
-                  <strong>Emergency:</strong> 911<br />
                   <strong>Appointments:</strong> (555) 123-4568
                 </p>
               </Card.Body>
@@ -73,11 +72,11 @@ const Contact = () => {
                     </ul>
                   </Col>
                   <Col md={6}>
-                    <h6 className="fw-bold mb-3">Emergency Services</h6>
+                    <h6 className="fw-bold mb-3">Pediatrics Services</h6>
                     <ul className="list-unstyled">
-                      <li className="mb-2"><strong>24/7 Emergency Care</strong></li>
-                      <li className="mb-2">Call 911 for life-threatening emergencies</li>
-                      <li className="mb-2">Walk-ins accepted for urgent care</li>
+                      <li className="mb-2"><strong>Monday - Friday:</strong> 8:00 AM - 4:00 PM</li>
+                      <li className="mb-2"><strong>Saturday:</strong> 9:00 AM - 1:00 PM</li>
+                      <li className="mb-2"><strong>Sunday:</strong> Closed</li>
                     </ul>
                   </Col>
                 </Row>

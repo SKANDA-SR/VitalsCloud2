@@ -43,8 +43,8 @@ const BookAppointment = () => {
   };
 
   const doctorOptions = doctors.map(doctor => ({
-    value: doctor.id,
-    label: `Dr. ${doctor.first_name} ${doctor.last_name} - ${doctor.specialization}`,
+    value: doctor._id,
+    label: `Dr. ${doctor.firstName} ${doctor.lastName} - ${doctor.specialization}`,
     data: doctor
   }));
 
@@ -74,7 +74,7 @@ const BookAppointment = () => {
             relationship: data.emergencyContactRelation
           } : undefined
         },
-        doctorId: parseInt(data.doctorId),
+        doctorId: data.doctorId,
         appointmentDate: moment(selectedDate).format('YYYY-MM-DD'),
         appointmentTime: data.appointmentTime,
         reason: data.reason,
@@ -210,7 +210,7 @@ const BookAppointment = () => {
                         {...register('phone', { 
                           required: 'Phone number is required',
                           pattern: {
-                            value: /^[\+]?[1-9][\d]{0,15}$/,
+                            value: /^[\+]?[0-9\-\s\(\)]{10,15}$/,
                             message: 'Invalid phone number'
                           }
                         })}

@@ -38,22 +38,22 @@ const Footer = () => {
             <h6 className="text-uppercase fw-bold mb-3 text-primary">Quick Links</h6>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <Link to="/" className="text-muted text-decoration-none hover-primary">
+                <Link to="/" className="text-light text-decoration-none hover-primary">
                   Home
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/services" className="text-muted text-decoration-none hover-primary">
+                <Link to="/services" className="text-light text-decoration-none hover-primary">
                   Services
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/doctors" className="text-muted text-decoration-none hover-primary">
+                <Link to="/doctors" className="text-light text-decoration-none hover-primary">
                   Doctors
                 </Link>
               </li>
               <li className="mb-2">
-                <Link to="/about" className="text-muted text-decoration-none hover-primary">
+                <Link to="/about" className="text-light text-decoration-none hover-primary">
                   About Us
                 </Link>
               </li>
@@ -64,19 +64,10 @@ const Footer = () => {
             <h6 className="text-uppercase fw-bold mb-3 text-primary">Services</h6>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <span className="text-muted">General Consultation</span>
+                <span className="text-light">General Medicine</span>
               </li>
               <li className="mb-2">
-                <span className="text-muted">Cardiology</span>
-              </li>
-              <li className="mb-2">
-                <span className="text-muted">Dermatology</span>
-              </li>
-              <li className="mb-2">
-                <span className="text-muted">Pediatrics</span>
-              </li>
-              <li className="mb-2">
-                <span className="text-muted">Emergency Care</span>
+                <span className="text-light">Pediatrics</span>
               </li>
             </ul>
           </Col>
@@ -86,19 +77,19 @@ const Footer = () => {
             <ul className="list-unstyled">
               <li className="mb-2 d-flex align-items-center">
                 <i className="bi bi-geo-alt-fill text-primary me-2"></i>
-                <span className="text-muted">123 Medical Center Drive<br />Healthcare City, HC 12345</span>
+                <span className="text-light">123 Medical Center Drive<br />Healthcare City, HC 12345</span>
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <i className="bi bi-telephone-fill text-primary me-2"></i>
-                <span className="text-muted">(555) 123-4567</span>
+                <span className="text-light">(555) 123-4567</span>
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <i className="bi bi-envelope-fill text-primary me-2"></i>
-                <span className="text-muted">info@healthcareclinic.com</span>
+                <span className="text-light">info@healthcareclinic.com</span>
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <i className="bi bi-clock-fill text-primary me-2"></i>
-                <span className="text-muted">24/7 Emergency Services</span>
+                <span className="text-light">General Practice Hours: Mon-Fri 9AM-5PM</span>
               </li>
             </ul>
           </Col>
@@ -115,19 +106,19 @@ const Footer = () => {
           <Col md={6} className="text-md-end">
             <ul className="list-inline mb-0">
               <li className="list-inline-item">
-                <a href="#" className="text-muted text-decoration-none hover-primary">
+                <a href="#" className="text-light text-decoration-none hover-primary">
                   Privacy Policy
                 </a>
               </li>
-              <li className="list-inline-item mx-2 text-muted">|</li>
+              <li className="list-inline-item mx-2 text-light">|</li>
               <li className="list-inline-item">
-                <a href="#" className="text-muted text-decoration-none hover-primary">
+                <a href="#" className="text-light text-decoration-none hover-primary">
                   Terms of Service
                 </a>
               </li>
-              <li className="list-inline-item mx-2 text-muted">|</li>
+              <li className="list-inline-item mx-2 text-light">|</li>
               <li className="list-inline-item">
-                <a href="#" className="text-muted text-decoration-none hover-primary">
+                <a href="#" className="text-light text-decoration-none hover-primary">
                   Cookie Policy
                 </a>
               </li>

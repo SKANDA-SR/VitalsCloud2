@@ -36,11 +36,11 @@ const appointmentValidation = [
         .trim()
         .notEmpty()
         .withMessage('Phone number is required')
-        .matches(/^[\+]?[1-9][\d]{0,15}$/)
+        .matches(/^[\+]?[0-9\-\s\(\)]{10,15}$/)
         .withMessage('Invalid phone number format'),
     
     body('doctorId')
-        .isInt({ min: 1 })
+        .isMongoId()
         .withMessage('Valid doctor ID is required'),
     
     body('appointmentDate')

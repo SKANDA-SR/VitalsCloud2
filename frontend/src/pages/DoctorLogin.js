@@ -140,10 +140,10 @@ const DoctorLogin = () => {
                                                 variant="outline-secondary"
                                                 size="sm"
                                                 className="w-100"
-                                                onClick={() => handleDemoLogin('dr.sarah.johnson@clinic.com')}
+                                                onClick={() => handleDemoLogin('dr.smitha.sharma@clinic.com')}
                                             >
                                                 <i className="bi bi-person-circle me-1"></i>
-                                                Dr. Sarah Johnson
+                                                Dr. Smitha Sharma
                                                 <small className="d-block">General Medicine</small>
                                             </Button>
                                         </Col>
@@ -152,10 +152,10 @@ const DoctorLogin = () => {
                                                 variant="outline-secondary"
                                                 size="sm"
                                                 className="w-100"
-                                                onClick={() => handleDemoLogin('dr.michael.chen@clinic.com')}
+                                                onClick={() => handleDemoLogin('dr.varun.kumar@clinic.com')}
                                             >
                                                 <i className="bi bi-person-circle me-1"></i>
-                                                Dr. Michael Chen
+                                                Dr. Varun Kumar
                                                 <small className="d-block">Pediatrics</small>
                                             </Button>
                                         </Col>

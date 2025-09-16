@@ -1,6 +1,6 @@
 const Appointment = require('../models/Appointment');
 const Patient = require('../models/Patient');
-const { getPool } = require('../config/mysql');
+const Doctor = require('../models/Doctor');
 const { validationResult } = require('express-validator');
 const moment = require('moment');
 
@@ -20,7 +20,7 @@ const getAllAppointments = async (req, res) => {
 
         // Apply filters
         if (status) query.status = status;
-        if (doctorId) query.doctorId = parseInt(doctorId);
+        if (doctorId) query.doctorId = doctorId;
         if (date) {
             const startDate = moment(date).startOf('day').toDate();
             const endDate = moment(date).endOf('day').toDate();
@@ -30,33 +30,16 @@ const getAllAppointments = async (req, res) => {
 
         const appointments = await Appointment
             .find(query)
+            .populate('doctorId', 'firstName lastName specialization email phone consultationFee')
             .sort({ appointmentDate: -1, appointmentTime: -1 })
             .skip((page - 1) * parseInt(limit))
             .limit(parseInt(limit));
 
         const total = await Appointment.countDocuments(query);
 
-        // Get doctor details from MySQL
-        const pool = getPool();
-        const appointmentsWithDoctors = await Promise.all(
-            appointments.map(async (appointment) => {
-                if (appointment.doctorId) {
-                    const [doctorRows] = await pool.execute(
-                        'SELECT * FROM doctors WHERE id = ?',
-                        [appointment.doctorId]
-                    );
-                    return {
-                        ...appointment.toObject(),
-                        doctor: doctorRows[0] || null
-                    };
-                }
-                return appointment.toObject();
-            })
-        );
-
         res.json({
             success: true,
-            data: appointmentsWithDoctors,
+            data: appointments,
             pagination: {
                 currentPage: parseInt(page),
                 totalPages: Math.ceil(total / limit),
@@ -77,7 +60,9 @@ const getAllAppointments = async (req, res) => {
 // Get single appointment by ID
 const getAppointmentById = async (req, res) => {
     try {
-        const appointment = await Appointment.findById(req.params.id);
+        const appointment = await Appointment
+            .findById(req.params.id)
+            .populate('doctorId', 'firstName lastName specialization email phone consultationFee');
         
         if (!appointment) {
             return res.status(404).json({
@@ -86,20 +71,9 @@ const getAppointmentById = async (req, res) => {
             });
         }
 
-        // Get doctor details from MySQL
-        let appointmentWithDoctor = appointment.toObject();
-        if (appointment.doctorId) {
-            const pool = getPool();
-            const [doctorRows] = await pool.execute(
-                'SELECT * FROM doctors WHERE id = ?',
-                [appointment.doctorId]
-            );
-            appointmentWithDoctor.doctor = doctorRows[0] || null;
-        }
-
         res.json({
             success: true,
-            data: appointmentWithDoctor
+            data: appointment
         });
     } catch (error) {
         console.error('Get appointment error:', error);
@@ -125,14 +99,9 @@ const createAppointment = async (req, res) => {
 
         const appointmentData = req.body;
 
-        // Validate doctor exists in MySQL
-        const pool = getPool();
-        const [doctorRows] = await pool.execute(
-            'SELECT * FROM doctors WHERE id = ? AND status = "active"',
-            [appointmentData.doctorId]
-        );
-
-        if (doctorRows.length === 0) {
+        // Validate doctor exists in MongoDB
+        const doctor = await Doctor.findById(appointmentData.doctorId);
+        if (!doctor || doctor.status !== 'active') {
             return res.status(400).json({
                 success: false,
                 message: 'Doctor not found or inactive'

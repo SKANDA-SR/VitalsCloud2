@@ -18,7 +18,7 @@ const setupData = async () => {
         await Doctor.deleteMany({});
         console.log('🗑️ Cleared existing data');
 
-        // Add three specific services
+        // Add two specific services
         const services = [
             {
                 name: 'General Medicine',
@@ -49,21 +49,6 @@ const setupData = async () => {
                     'Parental guidance and support'
                 ],
                 imageUrl: 'https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=300&fit=crop&crop=center'
-            },
-            {
-                name: 'Emergency Care',
-                description: '24/7 urgent medical care for serious injuries, acute illnesses, and life-threatening conditions requiring immediate attention.',
-                durationMinutes: 60,
-                price: 300.00,
-                category: 'Emergency Services',
-                features: [
-                    '24/7 availability',
-                    'Trauma care',
-                    'Cardiac emergency treatment',
-                    'Advanced life support',
-                    'Emergency surgery coordination'
-                ],
-                imageUrl: 'https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?w=400&h=300&fit=crop&crop=center'
             }
         ];
 
@@ -71,17 +56,17 @@ const setupData = async () => {
         const createdServices = await Service.insertMany(services);
         console.log(`✅ Added ${createdServices.length} services`);
 
-        // Add two doctors
+        // Add two doctors with Indian names
         const doctors = [
             {
-                firstName: 'Sarah',
-                lastName: 'Johnson',
-                email: 'dr.sarah.johnson@clinic.com',
+                firstName: 'Smitha',
+                lastName: 'Sharma',
+                email: 'dr.smitha.sharma@clinic.com',
                 password: 'doctor123', // Will be hashed automatically
                 specialization: 'General Medicine',
                 qualification: 'MD, MBBS',
                 experienceYears: 12,
-                phone: '+1-555-0101',
+                phone: '+91-98765-43210',
                 consultationFee: 150.00,
                 availableDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'],
                 availableHours: new Map([
@@ -91,18 +76,18 @@ const setupData = async () => {
                     ['thursday', ['09:00', '17:00']],
                     ['friday', ['09:00', '15:00']]
                 ]),
-                bio: 'Dr. Sarah Johnson is an experienced general practitioner with over 12 years of experience in primary healthcare. She specializes in preventive medicine, chronic disease management, and family medicine.',
+                bio: 'Dr. Smitha Sharma is an experienced general practitioner with over 12 years of experience in primary healthcare. She specializes in preventive medicine, chronic disease management, and family medicine.',
                 imageUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&h=300&fit=crop&crop=face'
             },
             {
-                firstName: 'Michael',
-                lastName: 'Chen',
-                email: 'dr.michael.chen@clinic.com',
+                firstName: 'Varun',
+                lastName: 'Kumar',
+                email: 'dr.varun.kumar@clinic.com',
                 password: 'doctor123', // Will be hashed automatically
                 specialization: 'Pediatrics',
                 qualification: 'MD, Pediatrics Board Certified',
                 experienceYears: 8,
-                phone: '+1-555-0102',
+                phone: '+91-98765-43211',
                 consultationFee: 180.00,
                 availableDays: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
                 availableHours: new Map([
@@ -113,23 +98,28 @@ const setupData = async () => {
                     ['friday', ['08:00', '16:00']],
                     ['saturday', ['09:00', '13:00']]
                 ]),
-                bio: 'Dr. Michael Chen is a dedicated pediatrician who provides comprehensive medical care for children from birth through adolescence. He has special interests in childhood development and preventive pediatric care.',
+                bio: 'Dr. Varun Kumar is a dedicated pediatrician who provides comprehensive medical care for children from birth through adolescence. He has special interests in childhood development and preventive pediatric care.',
                 imageUrl: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=300&h=300&fit=crop&crop=face'
             }
         ];
 
         console.log('👨‍⚕️ Adding doctors...');
-        const createdDoctors = await Doctor.insertMany(doctors);
+        const createdDoctors = [];
+        for (const doctorData of doctors) {
+            const doctor = new Doctor(doctorData);
+            await doctor.save(); // This triggers the password hashing middleware
+            createdDoctors.push(doctor);
+        }
         console.log(`✅ Added ${createdDoctors.length} doctors`);
 
         console.log('\n🎉 Data setup completed successfully!');
         console.log('\n🔐 Doctor Login Credentials:');
-        console.log('1. Dr. Sarah Johnson (General Medicine)');
-        console.log('   Email: dr.sarah.johnson@clinic.com');
+        console.log('1. Dr. Smitha Sharma (General Medicine)');
+        console.log('   Email: dr.smitha.sharma@clinic.com');
         console.log('   Password: doctor123');
         console.log('');
-        console.log('2. Dr. Michael Chen (Pediatrics)');
-        console.log('   Email: dr.michael.chen@clinic.com');
+        console.log('2. Dr. Varun Kumar (Pediatrics)');
+        console.log('   Email: dr.varun.kumar@clinic.com');
         console.log('   Password: doctor123');
         console.log('');
         console.log('🌐 Access the application at: http://localhost:3000');

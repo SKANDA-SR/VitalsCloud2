@@ -15,9 +15,9 @@ const Home = () => {
       description: 'Our certified physicians provide comprehensive medical care with years of experience'
     },
     {
-      icon: 'bi-clock',
-      title: '24/7 Emergency',
-      description: 'Round-the-clock emergency services for urgent medical situations'
+      icon: 'bi-people',
+      title: 'Family Care',
+      description: 'Comprehensive healthcare for the whole family, from pediatrics to adult medicine'
     },
     {
       icon: 'bi-heart',
@@ -28,11 +28,7 @@ const Home = () => {
 
   const services = [
     'General Medicine',
-    'Cardiology',
-    'Pediatrics', 
-    'Dermatology',
-    'Orthopedics',
-    'Gynecology'
+    'Pediatrics'
   ];
 
   return (
@@ -161,7 +157,7 @@ const Home = () => {
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="stat-item">
-                <h3 className="display-4 fw-bold text-primary">50+</h3>
+                <h3 className="display-4 fw-bold text-primary">2</h3>
                 <p className="text-muted">Expert Doctors</p>
               </div>
             </Col>
@@ -173,8 +169,8 @@ const Home = () => {
             </Col>
             <Col lg={3} md={6} className="mb-4">
               <div className="stat-item">
-                <h3 className="display-4 fw-bold text-primary">24/7</h3>
-                <p className="text-muted">Emergency Care</p>
+                <h3 className="display-4 fw-bold text-primary">6</h3>
+                <p className="text-muted">Days per Week</p>
               </div>
             </Col>
           </Row>

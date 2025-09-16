@@ -7,50 +7,14 @@ const Services = () => {
     {
       icon: 'bi-heart-pulse',
       title: 'General Medicine',
-      description: 'Comprehensive primary care services for all ages, including routine check-ups, preventive care, and treatment of common illnesses.',
-      features: ['Annual Physical Exams', 'Chronic Disease Management', 'Health Screenings', 'Vaccinations']
-    },
-    {
-      icon: 'bi-activity',
-      title: 'Cardiology',
-      description: 'Specialized heart and cardiovascular care with advanced diagnostic and treatment options.',
-      features: ['ECG/EKG Tests', 'Stress Testing', 'Heart Disease Treatment', 'Blood Pressure Management']
+      description: 'Comprehensive primary healthcare services for adults, including routine check-ups, preventive care, and treatment of common medical conditions.',
+      features: ['Routine health check-ups', 'Preventive care', 'Chronic disease management', 'Health screenings', 'Vaccination services']
     },
     {
       icon: 'bi-person-hearts',
       title: 'Pediatrics',
-      description: 'Complete healthcare services for infants, children, and adolescents in a child-friendly environment.',
-      features: ['Well-Child Visits', 'Growth Monitoring', 'Childhood Vaccinations', 'Developmental Assessments']
-    },
-    {
-      icon: 'bi-bandaid',
-      title: 'Dermatology',
-      description: 'Expert skin care services for all dermatological conditions and cosmetic procedures.',
-      features: ['Skin Examinations', 'Acne Treatment', 'Skin Cancer Screening', 'Cosmetic Procedures']
-    },
-    {
-      icon: 'bi-activity',
-      title: 'Orthopedics',
-      description: 'Comprehensive bone, joint, and muscle care from injury prevention to surgical treatment.',
-      features: ['Fracture Care', 'Joint Replacement', 'Sports Medicine', 'Physical Therapy']
-    },
-    {
-      icon: 'bi-gender-female',
-      title: 'Gynecology',
-      description: 'Complete womens health services in a comfortable and confidential environment.',
-      features: ['Annual Exams', 'Pregnancy Care', 'Family Planning', 'Menopause Management']
-    },
-    {
-      icon: 'bi-eye',
-      title: 'Ophthalmology',
-      description: 'Complete eye care services from routine exams to advanced surgical procedures.',
-      features: ['Eye Exams', 'Vision Correction', 'Cataract Surgery', 'Glaucoma Treatment']
-    },
-    {
-      icon: 'bi-bandaid-fill',
-      title: 'Emergency Care',
-      description: '24/7 emergency medical services for urgent and life-threatening conditions.',
-      features: ['Trauma Care', 'Critical Care', 'Emergency Surgery', 'Ambulance Services']
+      description: 'Specialized medical care for infants, children, and adolescents, including wellness visits, vaccinations, and treatment of childhood illnesses.',
+      features: ['Child wellness visits', 'Pediatric vaccinations', 'Growth and development monitoring', 'Treatment of childhood illnesses', 'Parental guidance and support']
     }
   ];
 
@@ -69,9 +33,9 @@ const Services = () => {
         </Row>
 
         {/* Services Grid */}
-        <Row>
+        <Row className="justify-content-center">
           {services.map((service, index) => (
-            <Col lg={6} className="mb-4" key={index}>
+            <Col lg={8} xl={6} className="mb-4" key={index}>
               <Card className="h-100 service-card border-0 shadow-sm">
                 <Card.Body className="p-4">
                   <div className="d-flex align-items-start">
@@ -109,15 +73,15 @@ const Services = () => {
             <div className="bg-primary text-white rounded p-5 text-center">
               <Row className="align-items-center">
                 <Col lg={8}>
-                  <h3 className="mb-3">Need immediate medical attention?</h3>
+                  <h3 className="mb-3">Need to schedule an appointment?</h3>
                   <p className="mb-0">
-                    Our emergency department is open 24/7 to provide urgent care when you need it most.
+                    Our experienced doctors are available Monday through Saturday to provide quality care.
                   </p>
                 </Col>
                 <Col lg={4} className="text-lg-end mt-3 mt-lg-0">
-                  <Button variant="warning" size="lg">
-                    <i className="bi bi-telephone-fill me-2"></i>
-                    Call Emergency: 911
+                  <Button as={Link} to="/book-appointment" variant="warning" size="lg">
+                    <i className="bi bi-calendar-plus me-2"></i>
+                    Book Appointment
                   </Button>
                 </Col>
               </Row>
